@@ -12,7 +12,8 @@ interface MedicalRecordAttrs {
 }
 
 @Table({ tableName: "medicalRecords" })
-export class MedicalRecord extends Model<MedicalRecord, MedicalRecordAttrs> {
+export class MedicalRecord extends Model<MedicalRecord, MedicalRecordAttrs>
+{
     @ApiProperty({ example: 1, description: "Unique identifier" })
     @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
     id: number;
