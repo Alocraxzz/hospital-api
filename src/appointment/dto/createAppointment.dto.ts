@@ -10,6 +10,6 @@ export class CreateAppointmentDto {
     @ApiProperty({ example: "2021-05-18T15:00:00.000Z" })
     readonly date: Date;
     
-    @ApiProperty({ example: "1" })
+    @ApiProperty({ example: "Some reason" })
     readonly reason: string;
 }

@@ -1,10 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { MedicalRecord } from "../medical-record/medical-record.model";
+import { Appointment } from "../appointment/appointment.model";
 
 interface DoctorCreationAttrs {
-    firstName: string;
-    lastName: string;
-    dateOfBirth: Date;
+    name: string;
+    surname: string;
+    speciality: string;
     phoneNumber: string;
 }
 
@@ -17,11 +19,11 @@ export class Doctor extends Model<Doctor, DoctorCreationAttrs>
 
     @ApiProperty({ example: "First name" })
     @Column({ type: DataType.STRING })
-    firstName: string;
+    name: string;
 
     @ApiProperty({ example: "Last name" })
     @Column({ type: DataType.STRING })
-    lastName: string;
+    surname: string;
 
     @ApiProperty({ example: "Medical assistant" })
     @Column({ type: DataType.STRING })
@@ -30,4 +32,12 @@ export class Doctor extends Model<Doctor, DoctorCreationAttrs>
     @ApiProperty({ example: '+380639874565' })
     @Column({ type: DataType.STRING })
     phoneNumber: string;
+
+    @ApiProperty({ example: 'MedicalRecord[]' })
+    @HasMany(() => MedicalRecord, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+    medicalRecords: MedicalRecord[];
+
+    @ApiProperty({ example: 'Appointment[]' })
+    @HasMany(() => Appointment, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+    appointments: Appointment[];
 }

@@ -36,7 +36,7 @@ export class PatientController {
     update(
         @Body() patientDto: CreatePatientDto,
         @Param('id') id: number
-    ): Promise<[affectedRow: number]> {
+    ): Promise<[affectedCount: number]> {
         return this.patientService.update(id, patientDto);
     }
 

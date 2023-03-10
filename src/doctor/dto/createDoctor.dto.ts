@@ -1,11 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateDoctorDto {
-    @ApiProperty({ example: "First name" })
-    readonly firstName: string;
+    @ApiProperty({ example: "Name" })
+    readonly name: string;
 
-    @ApiProperty({ example: "Last name" })
-    readonly lastName: string;
+    @ApiProperty({ example: "Surname" })
+    readonly surname: string;
 
     @ApiProperty({ example: "Medical assistant" })
     readonly speciality: string;

@@ -11,8 +11,7 @@ interface AppointmentCreationAttrs {
 }
 
 @Table({ tableName: "appointments" })
-export class Appointment extends Model<Appointment, AppointmentCreationAttrs>
-{
+export class Appointment extends Model<Appointment, AppointmentCreationAttrs> {
     @ApiProperty({ example: 1, description: "Unique identifier" })
     @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
     id: number;
@@ -40,11 +39,4 @@ export class Appointment extends Model<Appointment, AppointmentCreationAttrs>
 
     @BelongsTo(() => Doctor)
     doctor: Doctor;
-
-    toJSON() {
-        const appointment = Object.assign({}, this.get());
-        delete appointment.patientId;
-        delete appointment.doctorId;
-        return appointment;
-    }
 }
